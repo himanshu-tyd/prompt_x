@@ -6,7 +6,7 @@ import Loader from "./Loader";
 const SessionProvider = ({ children, session }) => {
   return (
     <NextAuthSessionProvider>
-      {session?.user.id ? (
+      {session ? (
         children
       ) : (
         <div className="w-full h-screen flex items-center justify-center">
