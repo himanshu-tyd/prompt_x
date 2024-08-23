@@ -9,9 +9,14 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "bcrypt": "^5.1.1",
+    "mongodb": "^6.8.0",
+    "mongoose": "^8.5.3",
+    "next": "14.2.6",
+    "next-auth": "^5.0.0-beta.20",
     "react": "^18",
     "react-dom": "^18",
-    "next": "14.2.6"
+    "react-spinners-kit": "^1.9.1"
   },
   "devDependencies": {
     "postcss": "^8",
