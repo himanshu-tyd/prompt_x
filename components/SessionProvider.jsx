@@ -1,20 +1,10 @@
 "use client";
 
 import { SessionProvider as NextAuthSessionProvider } from "next-auth/react";
-import Loader from "./Loader";
 
-const SessionProvider = ({ children, session }) => {
-  return (
-    <NextAuthSessionProvider>
-      {session ? (
-        children
-      ) : (
-        <div className="w-full h-screen flex items-center justify-center">
-          <Loader />
-        </div>
-      )}
-    </NextAuthSessionProvider>
-  );
+
+const SessionProvider = ({ children }) => {
+  return <NextAuthSessionProvider>{children}</NextAuthSessionProvider>;
 };
 
 export default SessionProvider;
