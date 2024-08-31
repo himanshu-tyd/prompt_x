@@ -5,8 +5,10 @@ import { useSession } from "next-auth/react";
 import { useRouter, usePathname } from "next/navigation";
 import Image from "next/image";
 
-const PromptCard = ({ posts, handleTagClick, handleEdit, handleDelete }) => {
+const PromptCard = ({ posts, handleTagClick, handleEdit, handleDelete,handleClick }) => {
   const [copied, setCopied] = useState("");
+  const route=useRouter()
+
 
   const { data: session } = useSession();
   const pathName = usePathname();
@@ -17,15 +19,24 @@ const PromptCard = ({ posts, handleTagClick, handleEdit, handleDelete }) => {
     setTimeout(() => setCopied(""), 3000);
   };
 
+  const handleProfileClick=()=>{
+    if(posts.creator._id==session?.user.id) return route.push('/profile')
+
+    route.push(`/profile/${posts.creator._id}?name=${posts.creator.username}`);  
+  }
+
+ 
+
   return (
     <div className="prompt_card">
       <div className="flex flex-between items-start gap-4">
-        <div className=" flex flex-1 justify-start items-center gap-3 cursor-pointer">
+        <div onClick={handleProfileClick} className=" flex flex-1 justify-start items-center gap-3 cursor-pointer">
           <Image
             src={posts.creator.image}
             width={30}
             height={30}
             className="rounded-full object-contain"
+            alt={posts.creator.username}
           />
           <div className="flex flex-col">
             <h3 className="font-satoshi font-bold text-gray-900">
@@ -46,6 +57,7 @@ const PromptCard = ({ posts, handleTagClick, handleEdit, handleDelete }) => {
             }
             height={14}
             width={14}
+            alt="copy"
           />
         </div>
       </div>

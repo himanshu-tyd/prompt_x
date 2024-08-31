@@ -4,10 +4,12 @@ import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { useSession, getProviders, signOut, signIn } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 const Nav = () => {
   const { data: session } = useSession();
 
+  const router=useRouter()
 
   const [providers, setProviders] = useState(null);
   const [toggleDropdown, setToggleDropdown] = useState(false);
@@ -19,14 +21,20 @@ const Nav = () => {
     })();
   }, []);
 
+
+ function handleSignOut(){
+  signOut()
+  router.push('/')
+ }
+
   return (
     <nav className="flex-between w-full mb-16 pt-3">
       <Link href="/" className="flex gap-3 flex-center">
         <Image
           src="/assets/images/logo.svg"
           alt="logo"
-          width={70}
-          height={70}
+          width={50}
+          height={50}
           className="object-contain"
         />
         <p className="logo_text text-shatoshi ">PromptX</p>
@@ -40,7 +48,7 @@ const Nav = () => {
               Create Post
             </Link>
 
-            <button type="button" onClick={signOut} className="outline_btn">
+            <button type="button" onClick={handleSignOut} className="outline_btn">
               Sign Out
             </button>
 
