@@ -12,7 +12,7 @@ const authOption = {
   ],
   secret:process.env.NEXTAUTH_SECRET,
 
-  callbacks: {
+  callback: {
     async session({ session }) {
       try {
       await connectToDB();
