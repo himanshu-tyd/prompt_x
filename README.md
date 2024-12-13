@@ -1,4 +1,4 @@
-![alt image](public\assets\images\prompt-x.png) 
+![alt image](./public/assets/images/prompt-x.png) 
  
  # 🌟 PromptX
 
@@ -42,12 +42,24 @@ Set up the platform locally by following these steps:
    npm install
    ```
 
-4. **Start the Development Server**:
+4. **Set Up Environment Variables**:
+   Create a new file named `.env` in the root of your project and add the following lines:
+   ```makefile
+   GOOGLE_ID=your_google_id
+   GOOGLE_SECRET=your_google_secret
+   MONGODB_URI=your_mongodb_uri
+   NEXTAUTH_URL=http://localhost:3000
+   NEXTAUTH_URL_INTERNET=http://localhost:3000
+   NEXTAUTH_SECRET=your_nextauth_secret
+   ```
+   🔄 Replace the placeholders with your actual values. 📂 Make sure to add the `.env` file to your `.gitignore` file so that it's not committed to your version control system. 🛠️ Use a library like `dotenv` to load the environment variables in your Next.js application.
+
+5. **Start the Development Server**:
    ```bash
    npm start
    ```
 
-5. **Access the Application**:
+6. **Access the Application**:
    Open your browser and navigate to `http://localhost:3000`.
 
 ## 💻 Usage
